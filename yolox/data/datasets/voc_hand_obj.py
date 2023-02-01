@@ -140,10 +140,11 @@ class AnnotationTransform(object):
 
         gt_classes = np.expand_dims(gt_classes, axis = 1)
         gt_boxes = np.hstack((boxes, gt_classes)).astype(np.float32)
-        hand_info = np.array([magnitude, unitdx, unitdy, contactstate, handside]).astype(np.float32)
+        #hand_info = np.array([magnitude, unitdx, unitdy, contactstate, handside]).astype(np.float32)
+        hand_info = np.array([magnitude, unitdx, unitdy]).astype(np.float32)
         hand_info = np.transpose(hand_info)
 
-        ret_arr = np.hstack((gt_boxes, hand_info)) #x1, y1, x2, y2, magnitude, unitdx, unitdy, contactstate, handside,
+        ret_arr = np.hstack((gt_boxes, hand_info)) #x1, y1, x2, y2, magnitude, unitdx, unitdy
 
         return ret_arr, img_info
 

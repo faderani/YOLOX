@@ -241,6 +241,12 @@ class Trainer:
                 self.epoch + 1, self.max_epoch, self.iter + 1, self.max_iter
             )
             loss_meter = self.meter.get_filtered_meter("loss")
+
+            # if self.args.logger == "tensorboard":
+            #     for k, v in loss_meter.items():
+            #         self.tblogger.add_scalar(k, v.latest.cpu().numpy(), self.iter + 1)
+
+
             loss_str = ", ".join(
                 ["{}: {:.1f}".format(k, v.latest) for k, v in loss_meter.items()]
             )
